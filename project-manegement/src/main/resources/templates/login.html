@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Moze Premier League</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: url('https://www.hiresafe.com/wp-content/uploads/2014/08/iStock_000019844324Large.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.85); /* Transparent white */
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .form-control {
+            border-radius: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #003366;
+            border-color: #003366;
+        }
+
+        .btn-primary:hover {
+            background-color: #FFD700;
+            color: #003366;
+            border-color: #FFD700;
+        }
+
+        .text-primary {
+            color: #003366 !important;
+        }
+
+        .text-muted {
+            color: #666 !important;
+        }
+
+        .text-gold {
+            color: #FFD700;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container login-container">
+    <div class="col-md-6 col-lg-5">
+        <div class="card">
+            <div class="card-body text-center">
+                <!-- <img th:src="@{/img/MPL.png}" alt="MPL Logo" class="logo"> -->
+                <h4 class="mb-3 text-primary">Project Submission Portal</h4>
+                <p class="mb-4 text-muted">Please login to your account</p>
+
+                <!-- Success/Error messages -->
+                <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                <!-- Login Form -->
+                <form th:action="@{/login}" method="post">
+                    <div class="mb-3 text-start">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+
+                    <div class="mb-3 text-start">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <p class="mt-4 text-muted small">© 2025 Project Submission Portal</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

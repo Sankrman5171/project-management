@@ -1,0 +1,29 @@
+<!-- templates/projecthead/projectfile-upload.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Upload Project File</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Upload Project File</h2>
+  <form th:action="@{/projecthead/projectfile/save}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="groupId" th:value="${groupId}"/>
+
+    <div class="mb-3">
+      <label>Choose File</label>
+      <input type="file" name="file" class="form-control" required/>
+    </div>
+
+    <div class="mb-3">
+      <label>Uploaded By</label>
+      <input type="text" name="uploadedBy" class="form-control" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <a th:href="@{'/projecthead/projectgroup'}" class="btn btn-secondary">Back</a>
+  </form>
+</div>
+</body>
+</html>

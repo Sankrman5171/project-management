@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Moze Premier League</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+        background-color: #f0f4f8;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .register-card {
+        max-width: 450px;
+        margin: 60px auto;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        background-color: #ffffff;
+    }
+
+    .register-title {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #022f71;
+    }
+
+    .btn-primary {
+        background-color: #022f71;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0149aa;
+    }
+  </style>
+</head>
+<body>
+
+<div class="register-card">
+  <h3 class="register-title">Create Your Account</h3>
+
+  <!-- Alert for success -->
+  <div class="alert alert-success" th:if="${success}">
+    <span th:text="${success}"></span>
+  </div>
+
+  <!-- Alert for error -->
+  <div class="alert alert-danger" th:if="${error}">
+    <span th:text="${error}"></span>
+  </div>
+
+  <!-- Registration Form -->
+  <form th:action="@{/register}" method="post">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" name="username" class="form-control" required placeholder="Enter your username">
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password">
+    </div>
+
+    <div class="mb-3">
+      <label for="role" class="form-label">Role</label>
+      <select id="role" name="role" class="form-select" required>
+        <option value="" selected disabled>Select role</option>
+        <option value="ADMIN">ADMIN</option>
+        <option value="HOD">HOD</option>
+        <option value="MENTOR">MENTOR</option>
+        <option value="PROJECTHEAD">PROJECTHEAD</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

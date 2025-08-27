@@ -1,0 +1,34 @@
+<!-- templates/projecthead/projectgroup.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Project Group</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="mb-4">My Project Group</h2>
+
+  <div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+  <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+  <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+  <div th:if="${projectgroup}" th:each="group : ${projectgroup}">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title" th:text="${group.projectTitle}"></h5>
+        <p class="card-text" th:text="${group.description}"></p>
+        <p><strong>Status:</strong> <span th:text="${group.status}"></span></p>
+        <p><strong>Submission Date:</strong> <span th:text="${#dates.format(group.submissionDate, 'dd-MM-yyyy')}"></span></p>
+        <a th:href="@{/projecthead/projectgroup/{id}/edit(id=${group.groupid})}" class="btn btn-primary btn-sm">Edit</a>
+        <form th:action="@{/projecthead/projectgroup/{id}/delete(id=${group.groupid})}" method="post" style="display:inline;">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <a th:href="@{/projecthead/projectgroup/new}" class="btn btn-success">Create New Group</a>
+</div>
+</body>
+</html>
